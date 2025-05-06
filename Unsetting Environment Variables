@@ -1,0 +1,28 @@
+Unsetting Environment Variables
+
+
+Sometimes, you may need to remove an environment variable. This is done using the unset command.
+
+First, let's check if our MY_ENV_VAR is still set:
+
+echo $MY_ENV_VAR
+ Explain Code
+You should see the value we set earlier.
+
+To unset (remove) this variable, use the unset command:
+
+unset MY_ENV_VAR
+ Explain Code
+Verify that the variable has been unset:
+
+echo $MY_ENV_VAR
+ Explain Code
+You should see no output, indicating that the variable no longer exists.
+
+You can also use the -v option with unset to ensure you're unsetting a variable and not a shell function:
+
+unset -v MY_ENV_VAR
+ Explain Code
+This will have the same result as just running unset MY_ENV_VAR.
+
+Remember, if you've added the variable to your .zshrc file, it will be recreated the next time you open a terminal or source the .zshrc file.
