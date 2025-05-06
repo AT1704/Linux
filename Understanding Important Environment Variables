@@ -1,0 +1,26 @@
+Understanding Important Environment Variables
+
+
+Linux has several built-in environment variables that are crucial for system operation. Let's explore some of them:
+
+HOME: Points to the home directory of the current user.
+
+echo $HOME
+ Explain Code
+USER: Contains the username of the current user.
+
+echo $USER
+ Explain Code
+SHELL: Specifies the user's default shell.
+
+echo $SHELL
+ Explain Code
+PWD: Stands for "Print Working Directory". It contains the path of the current directory.
+
+echo $PWD
+ Explain Code
+TERM: Specifies the type of terminal to emulate when running the shell.
+
+echo $TERM
+ Explain Code
+Understanding these variables can help you better navigate and control your Linux environment.
