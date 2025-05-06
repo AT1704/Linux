@@ -1,0 +1,31 @@
+Making Environment Variables Permanent
+
+
+The environment variables we've set will be lost when you close the terminal. To make them permanent, we need to add them to a shell configuration file. The exact file depends on which shell you're using.
+
+In this lab environment, we're using the Z shell (zsh), which is an extended version of the Bourne Shell (sh), with many improvements, including some features of Bash, ksh, and tcsh. Zsh has become increasingly popular and is now the default shell in macOS.
+
+If you were using Bash (which is still the default on many Linux distributions), you would modify .bashrc. However, since we're using Zsh, we'll modify .zshrc. It's very important to use the correct file. If you modify .bashrc while using zsh, the variables will not be set.
+
+Open the .zshrc file in your home directory with a text editor. We'll use nano, which is a simple terminal-based text editor:
+
+nano ~/.zshrc
+ Explain Code
+This command opens the ~/.zshrc file, where ~ is again a shortcut for your home directory /home/labex. If the .zshrc file doesn't exist, nano will create a new one. This file is executed every time you start a new terminal session.
+
+Scroll to the bottom of the file (you can use the arrow keys), and add the following lines:
+
+export MY_ENV_VAR="This is an environment variable"
+export PATH="$PATH:$HOME/my_scripts"
+ Explain Code
+Make sure to add these lines to the bottom of the file. Ensure the spelling and syntax are correct, especially that there are no spaces around the = sign.
+
+Save the file and exit the editor. In nano, you do this by pressing Ctrl+X, then Y (to save), then Enter.
+
+To apply these changes without restarting your terminal, use the source command:
+
+source ~/.zshrc
+ Explain Code
+The source command reads and executes commands from the file specified as its argument in the current shell environment. This is different than simply executing the file using bash ~/.zshrc, which would run the script in a new shell and not affect the current one. source runs it in the current shell so your changes take effect immediately. If you skip this step, your changes will not take effect in your current terminal, and you'll have to close and reopen it to see the changes.
+
+Now, these environment variables will be set every time you open a new terminal. This is incredibly useful for setting up your development environment consistently.
