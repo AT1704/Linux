@@ -1,0 +1,56 @@
+Modifying the PATH Environment Variable
+
+
+The PATH variable is one of the most important environment variables in Linux. It tells the system where to look for executable files. Let's modify it to include a new directory.
+
+First, let's create a new directory where we might store custom scripts:
+
+mkdir ~/my_scripts
+ Explain Code
+This creates a directory called my_scripts in your home directory. The ~ symbol is a shortcut for your home directory path, which is /home/labex in this lab.
+
+Now, let's add this new directory to your PATH. We'll use the export command, but this time we're modifying an existing variable:
+
+export PATH="$PATH:$HOME/my_scripts"
+ Explain Code
+Let's break this down:
+
+$PATH is the current value of the PATH environment variable. We are using the existing value and adding to it.
+: is used to separate directories in the PATH. If you omit the colon, the shell will not be able to find executables in your added directory.
+$HOME is an environment variable that points to your home directory (again, /home/labex in our case).
+So, we're appending :$HOME/my_scripts to the existing PATH. This tells the system to look for executables in my_scripts after it searches the directories in the original PATH.
+Verify that the new directory has been added:
+
+echo $PATH
+ Explain Code
+You should see /home/labex/my_scripts at the end of the output. If it's not at the end, you may have modified it in a different way, which is ok, but you should still have the /home/labex/my_scripts path in your PATH.
+
+To test this, let's create a simple script in our new directory:
+
+echo '#!/bin/bash
+echo "Hello from my custom script!"' > ~/my_scripts/hello.sh
+ Explain Code
+This creates a shell script called hello.sh in the ~/my_scripts directory. The first line, #!/bin/bash tells the system that this is a bash script, allowing it to be executed as a program.
+
+Make the script executable:
+
+chmod +x ~/my_scripts/hello.sh
+ Explain Code
+The chmod +x command adds execute permissions to the script, allowing it to be run as a program. If you don't do this step, you'll get a "permission denied" error when you try to execute it.
+
+Now, you should be able to run this script from anywhere by just typing its name:
+
+hello.sh
+ Explain Code
+If everything worked correctly, you should see: Hello from my custom script!
+
+This works because we added the my_scripts directory to the PATH. When you type a command, the shell looks for an executable file with that name in each of the directories listed in the PATH, in order. By adding my_scripts to the PATH, we've told the shell to look there for executables as well.
+
+To demonstrate this, try changing to a different directory and running the script again:
+
+cd /tmp
+hello.sh
+ Explain Code
+You'll see that the script still runs, even though you're not in the directory where it's located. This is the power of the PATH variable - it allows you to run executables from anywhere in the system, as long as they're in a directory listed in the PATH.
+
+Great job! You've successfully modified the PATH environment variable and created a custom script that can be run from anywhere.
